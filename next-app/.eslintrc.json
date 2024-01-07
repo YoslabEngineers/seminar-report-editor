@@ -1,3 +1,29 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "next",
+    "next/babel", // *.config.js 系のエラー回避
+    "next/core-web-vitals",
+    "prettier", // prettierとeslintとの衝突回避
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:import/warnings",
+    "plugin:tailwindcss/recommended" // class名を整形したりする
+  ],
+  "rules": {
+    // v17からReactをimport不要になった
+    "react/react-in-jsx-scope": "off",
+    // import の順番をルール化
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ]
+  }
 }
