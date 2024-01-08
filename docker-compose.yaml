@@ -15,7 +15,8 @@ services:
 
     volumes:
       - ./next-app:/app
-      - node_modules_volume:/app/node_modules:delegated
+      - ./next-app/node_modules:/app/node_modules:delegated
+      - next_cache_volume:/app/.next
       - build_volume:/app/build:nocopy
     ports:
       - 3000:3000
@@ -24,5 +25,5 @@ services:
       - default
 
 volumes:
-  node_modules_volume:
+  next_cache_volume:
   build_volume:

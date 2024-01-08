@@ -1,0 +1,29 @@
+{
+	"editor.bracketPairColorization.enabled": true,
+	// デフォルトのフォーマッタを prettier に設定
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	// ファイル保存時、prettier による自動フォーマット
+	"editor.formatOnSave": true,
+	"editor.formatOnSaveMode": "modificationsIfAvailable",
+	// ファイル保存時、ESLint による自動フォーマット
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit"
+	},
+	// コード補完高速化
+	"editor.acceptSuggestionOnEnter": "smart",
+	"editor.quickSuggestions": {
+		"other": "inline",
+		"comments": "inline",
+		"strings": "inline"
+	},
+	"editor.tabSize": 2,
+	"editor.inlineSuggest.enabled": true,
+	"files.autoSave": "afterDelay",
+	"css.validate": false,
+	// tailwindCSSの補完対象
+	"tailwindCSS.includeLanguages": {
+		"typescriptreact": "html"
+	},
+	"tailwindCSS.classAttributes": ["className"],
+	"files.autoSaveDelay": 1000
+}
