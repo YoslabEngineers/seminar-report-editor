@@ -22,6 +22,16 @@ services:
     restart: always
     networks:
       - default
+  
+  db:
+    image: mysql:8.2.0-oracle
+    container_name: mysql
+    env_file:
+      - ./db/.env
+    volumes:
+      - ./db/data:/var/lib/mysql
+    ports:
+      - 3306:3306
 
 volumes:
   node_modules_volume:
