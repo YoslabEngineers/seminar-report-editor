@@ -1,0 +1,78 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose
+{
+  "name": "next-app-container",
+
+  // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+  // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+  "dockerComposeFile": "../docker-compose.yaml",
+  
+  // The 'service' property is the name of the service for the container that VS Code should
+  // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+  "service": "next-app",
+  
+  // The optional 'workspaceFolder' property is the path VS Code should open by default when
+  // connected. This is typically a file mount in .devcontainer/docker-compose.yml
+  "workspaceFolder": "/app/",
+  
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "formulahendry.auto-rename-tag",
+        "dsznajder.es7-react-js-snippets",
+        "dbaeumer.vscode-eslint",
+        "withfig.fig",
+        "mhutchie.git-graph",
+        "GitHub.copilot",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "hex-ci.stylelint-plus",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        // デフォルトのフォーマッタを prettier に設定
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        // ファイル保存時、prettier による自動フォーマット
+        "editor.formatOnSave": true,
+        // ファイル保存時、ESLint による自動フォーマット
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "explicit"
+        },
+        // コード補完高速化
+        "editor.acceptSuggestionOnEnter": "smart",
+        "editor.quickSuggestions": {
+          "other": "inline",
+          "comments": "inline",
+          "strings": "inline"
+        },
+        "editor.tabSize": 2,
+        "editor.inlineSuggest.enabled": true,
+        "files.autoSave": "afterDelay",
+        "css.validate": false,
+        // tailwindCSSの補完対象
+        "tailwindCSS.includeLanguages": {
+          "typescriptreact": "html"
+        },
+        "tailwindCSS.classAttributes": ["className"]
+      }
+    }
+  },
+  // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "vscode"
+  
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
+
+  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+  "shutdownAction": "stopCompose"
+
+  // Uncomment the next line to run commands after the container is created.
+  // "postCreateCommand": "cat /etc/os-release",
+}
