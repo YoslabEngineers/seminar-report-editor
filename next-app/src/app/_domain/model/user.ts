@@ -1,4 +1,4 @@
-import { Position } from '@/types/position';
+import { Position } from '@/type/position';
 /**
  * Userのドメインモデル
  */
