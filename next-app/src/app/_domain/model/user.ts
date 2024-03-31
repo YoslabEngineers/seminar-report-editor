@@ -1,6 +1,8 @@
 import { Position } from '@/types/position';
-
-class User {
+/**
+ * Userのドメインモデル
+ */
+export class User {
   private name: string;
   private position: Position;
   private readonly studentId: string;
@@ -10,4 +12,21 @@ class User {
     this.position = position;
     this.studentId = studentId;
   }
+
+  setName(name: string) {
+    this.name = name;
+  }
+  
+  setPosition(position: Position) {
+    this.position = position;
+  }
+
+  getName(): string {
+    return this.name;
+  }
+
+  getPosition(): Position {
+    return this.position;
+  }
+
 }
