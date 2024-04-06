@@ -1,9 +1,22 @@
-// ドメインオブジェクトを引数にとる
-// DB書き込みを行う
-// 書き込みの成功/失敗を返す
-// function insertReport(report: Report) {
-// }
+import { PrismaClient } from '@prisma/client'
 
-function insertTest() {
-  
+const prisma = new PrismaClient()
+
+/**
+タイトルを指定してレポートを登録する
+@param title
+@returns
+*/
+export async function insertTest(title: string) {
+  try {
+    const report = await prisma.reports.create({
+      data: {
+        title: title,
+      },
+    })
+    return report
+  } catch (e) {
+    console.error(e)
+    return e
+  }
 }
