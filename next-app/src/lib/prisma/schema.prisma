@@ -8,6 +8,29 @@ datasource db {
 }
 
 model reports {
-  id    Int     @id @default(autoincrement())
-  title String? @db.Text
+  id           Int       @id @default(autoincrement())
+  is_submitted Boolean?  @default(false)
+  title        String?   @db.Text
+  seminar_date DateTime? @default(now()) @db.Timestamp(0)
+  user_id      Int?
+  report_num   Int?
+  page_num     Int?
+  total_pages  Int?
+  contents_url String?   @db.Text
+  created_at   DateTime? @default(now()) @db.Timestamp(0)
+  updated_at   DateTime? @default(now()) @db.Timestamp(0)
+  users        users?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "reports_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+model users {
+  id         Int       @id @default(autoincrement())
+  student_id String?   @db.Text
+  name       String?   @db.Text
+  position   String?   @db.Text
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  updated_at DateTime? @default(now()) @db.Timestamp(0)
+  pass       String?   @db.Text
+  reports    reports[]
 }

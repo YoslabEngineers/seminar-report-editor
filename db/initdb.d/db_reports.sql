@@ -7,7 +7,7 @@
 #
 # ホスト: localhost (MySQL 8.2.0)
 # データベース: db
-# 生成時間: 2024-04-06 15:49:50 +0000
+# 生成時間: 2024-04-12 11:09:17 +0000
 # ************************************************************
 
 
@@ -27,19 +27,27 @@ DROP TABLE IF EXISTS `reports`;
 
 CREATE TABLE `reports` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `is_submitted` tinyint(1) DEFAULT '0',
   `title` text,
-  PRIMARY KEY (`id`)
+  `seminar_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int DEFAULT NULL,
+  `report_num` int DEFAULT NULL,
+  `page_num` int DEFAULT NULL,
+  `total_pages` int DEFAULT NULL,
+  `contents_url` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 LOCK TABLES `reports` WRITE;
 /*!40000 ALTER TABLE `reports` DISABLE KEYS */;
 
-INSERT INTO `reports` (`id`, `title`)
+INSERT INTO `reports` (`id`, `is_submitted`, `title`, `seminar_date`, `user_id`, `report_num`, `page_num`, `total_pages`, `contents_url`, `created_at`, `updated_at`)
 VALUES
-	(1,'Your Title Here'),
-	(2,'HogeHogeTitle'),
-	(3,'ハロー'),
-	(4,'test');
+	(1,0,'sample title','2021-01-01 00:00:00',NULL,1,1,1,'sample path','2024-04-12 11:02:17','2024-04-12 11:02:17');
 
 /*!40000 ALTER TABLE `reports` ENABLE KEYS */;
 UNLOCK TABLES;
