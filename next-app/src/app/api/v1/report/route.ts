@@ -1,5 +1,5 @@
 import { type NextRequest } from 'next/server'
-import { insertTest } from '@/app/_repository/report'
+import { insertReport } from '@/app/_repository/report'
 
 /**
  * Test用API
@@ -9,8 +9,8 @@ import { insertTest } from '@/app/_repository/report'
  */
 export function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
-  const query: string = searchParams.get('title') || 'default'
-  const res = insertTest(query)
+  const query : string = searchParams.get('title') || "default"
+  const res = insertReport()
 
   return Response.json(res)
 }
