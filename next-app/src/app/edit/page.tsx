@@ -49,12 +49,12 @@ export default function Edit() {
       </div>
 
       {/* ページの本体部分 */}
-      <div className='w-full h-full p-6'>
+      <div className='w-full h-full p-6 relative'>
         <div className='w-full h-full grid grid-cols-2 justify-between gap-0 border-2 border-gray-300 rounded-lg overflow-hidden'>
           {/* エディター */}
           <div className='flex flex-col'>
             {/* エディター部分のヘッダー */}
-            <div className='bg-gray-200 p-4 relative'>
+            <div className='bg-gray-200 p-4'>
               <div className='flex'>
                 <div className='bg-gray-800 rounded-lg p-2'>
                   <p className='text-white font-bold'>Editor</p>
@@ -134,11 +134,6 @@ export default function Edit() {
                     height={40}
                   />
                 </div>
-              </div>
-
-              {/* エディターとプレビューの切り替え部分 */}
-              <div className='absolute top-1/4 right-[-15px]'>
-                <p className='text-3xl'>⇔</p>
               </div>
             </div>
 
@@ -245,6 +240,11 @@ export default function Edit() {
             <div className='p-4'>
               <p>1. はじめに</p>
             </div>
+          </div>
+
+          {/* エディターとプレビューの切り替え部分 */}
+          <div className='absolute top-10 left-1/2 -translate-x-3'>
+            <p className='text-3xl'>⇔</p>
           </div>
         </div>
       </div>
