@@ -1,5 +1,5 @@
 import { type NextRequest } from 'next/server'
-import { insertReport } from '@/app/_repository/report'
+import { registerNewReport } from '@/app/_application/service/registerReport'
 
 /**
  * Test用API
@@ -10,7 +10,7 @@ import { insertReport } from '@/app/_repository/report'
 export function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const query : string = searchParams.get('title') || "default"
-  const res = insertReport()
+  const res = registerNewReport()
 
   return Response.json(res)
 }
