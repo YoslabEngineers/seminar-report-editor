@@ -27,10 +27,8 @@ export function registerNewReport(request: RegisterNewReportRequest) {
   const isSubmitted = false
 
   // Userドメインオブジェクトを作成(後でドメインサービスに移動する)
-  const name = 'sample name'
-  const position: Position = 'B3'
-  const studentId = 's001'
-  const author = new User(name, position, studentId)
+  // TODO: studentIdからUserドメインオブジェクトを取得する
+  const author = createUser('Sample User Name', 'B3' as Position, request.studentId)
 
   // ドメインサービスを呼び出し、リクエストデータを基にレポートのドメインオブジェクトを取得する
   const report = createReport(isSubmitted, title, seminarDate, author, reportNumber, pageNumber, totalPages, content)

@@ -29,7 +29,24 @@ export function createReport(
     throw new Error('Author is required.')
   }
 
-  return new Report(isSubmitted, title, seminarDate, author, reportNumber, pageNumber, totalPages, content)
+/**
+ * UserのDomain Objectを作成する
+ * @param name 
+ * @param position 
+ * @param studentId 
+ * @returns 
+ */
+export function createUser(
+  name: string,
+  position: Position,
+  studentId: string
+) {
+
+  if (studentId === null) {
+    throw new Error('Student ID is required.')
+  }
+
+  return new User(name, position, studentId)
 }
 
 /**
