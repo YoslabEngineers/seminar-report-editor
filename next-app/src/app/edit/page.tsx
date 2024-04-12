@@ -215,7 +215,7 @@ export default function Edit() {
               </div>
 
               {/* レポート入力部分 */}
-              <div className='h-full my-3'>
+              <div className='flex-grow'>
                 <textarea
                   name='report-area'
                   className='w-full h-full bg-gray-100 overflow-hidden text-base'>
