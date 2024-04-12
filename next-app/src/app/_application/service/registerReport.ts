@@ -4,7 +4,18 @@ import { Report } from '@/app/_domain/model/report'
 import { User } from '@/app/_domain/model/user'
 import { Position } from '@/type/position'
 
-export function registerNewReport() {
+type RegisterNewReportRequest = {
+  title: string
+  seminarDate: Date
+  reportNumber: number
+  pageNumber: number
+  totalPages: number
+  content: string
+  isSubmitted: boolean
+  studentId: string
+}
+
+export function registerNewReport(request: RegisterNewReportRequest) {
   // 引数にエンドポイントへ渡ってきたリクエストデータを受け取る
   // 想定引数
   const title = 'リポジトリ層からのそうにゅう'
