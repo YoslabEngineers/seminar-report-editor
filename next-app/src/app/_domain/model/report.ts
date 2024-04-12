@@ -53,8 +53,8 @@ export class Report {
     this.totalPages = totalPages
   }
 
-  setcontent(content: string): void {
-    this.content = content
+  setContent(content: string): void {
+    this.content = content;
   }
 
   submit(): void {

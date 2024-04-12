@@ -25,22 +25,15 @@ export async function insertTest(title: string) {
  * Reportを登録する
  * @param report 
  */
-export async function insertReport() {
-// export async function insertReport(report: Report) {
-  const title = "sample title"
-  const seminarDate = new Date("2021-01-01")
-  const reportNumber = 1
-  const pageNumber = 1
-  const totalPages = 1
-  const content = "sample path"
+export async function insertReport(report: Report) {
 
-  // const title = report.getTitle()
-  // const seminarDate = report.getSeminarDate()
-  // const reportNumber = report.getReportNumber()
-  // const pageNumber = report.getPageNumber()
-  // const totalPages = report.getTotalPages()
-  // const content = report.getContent()
-  // const author = report.getAuthor()
+  const title = report.getTitle()
+  const seminarDate = report.getSeminarDate()
+  const reportNumber = report.getReportNumber()
+  const pageNumber = report.getPageNumber()
+  const totalPages = report.getTotalPages()
+  const content = report.getContent()
+  const author = report.getAuthor()
 
   try {
     const report = await prisma.reports.create({
