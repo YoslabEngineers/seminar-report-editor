@@ -1,33 +1,33 @@
 import { Report } from '@/app/_domain/model/report'
 import { User } from '@/app/_domain/model/user'
+import { Position } from '@/type/position';
 import { insertReport } from '@/app/_repository/report'
+
+type ReportResource = {
+  title: string
+  seminarDate: Date
+  author: User
+  reportNumber: number
+  pageNumber: number
+  totalPages: number
+  content: string
+  isSubmitted: boolean
+}
+
 
 /**
  * ReportのDomain Objectを作成する
- * @param isSubmitted 
- * @param title 
- * @param seminarDate 
- * @param author 
- * @param reportNumber 
- * @param pageNumber 
- * @param totalPages 
- * @param content 
+ * @param resource 
  * @returns 
  */
-export function createReport(
-  isSubmitted: boolean,
-  title: string,
-  seminarDate: Date,
-  author: User,
-  reportNumber: number,
-  pageNumber: number,
-  totalPages: number,
-  content: string,
-) {
+export function createReport(resource: ReportResource) {
 
-  if (author === null) {
+  if (resource.author === null) {
     throw new Error('Author is required.')
   }
+
+  return new Report(resource)
+}
 
 /**
  * UserのDomain Objectを作成する

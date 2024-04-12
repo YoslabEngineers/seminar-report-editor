@@ -1,35 +1,39 @@
-import { User } from './user'
+import { User } from './user';
+
+  
+interface IReport {
+  title: string
+  author: User
+  seminarDate: Date
+  reportNumber: number
+  pageNumber: number
+  totalPages: number
+  content: string
+  isSubmitted?: boolean
+}
+
 /**
  * Report（ゼミレポ）のドメインモデル
  */
 export class Report {
-  private isSubmitted: boolean
   private title: string
-  private seminarDate: Date
   private readonly author: User
+  private seminarDate: Date
   private reportNumber: number
   private pageNumber: number
   private totalPages: number
   private content: string
+  private isSubmitted: boolean
 
-  constructor(
-    isSubmitted: boolean,
-    title: string,
-    seminarDate: Date,
-    author: User,
-    reportNumber: number,
-    pageNumber: number,
-    totalPages: number,
-    content: string,
-  ) {
-    this.isSubmitted = isSubmitted
-    this.title = title
-    this.seminarDate = seminarDate
-    this.author = author
-    this.reportNumber = reportNumber
-    this.pageNumber = pageNumber
-    this.totalPages = totalPages
-    this.content = content
+  constructor(report: IReport) {
+    this.title = report.title
+    this.author = report.author
+    this.seminarDate = report.seminarDate
+    this.reportNumber = report.reportNumber
+    this.pageNumber = report.pageNumber
+    this.totalPages = report.totalPages
+    this.content = report.content
+    this.isSubmitted = report.isSubmitted || false
   }
 
   setTitle(title: string): void {
@@ -54,7 +58,7 @@ export class Report {
   }
 
   setContent(content: string): void {
-    this.content = content;
+    this.content = content
   }
 
   submit(): void {
