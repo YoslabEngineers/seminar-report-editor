@@ -52,7 +52,7 @@ export default function Edit() {
       <div className='w-full h-full p-6'>
         <div className='w-full h-full grid grid-cols-2 justify-between gap-0 border-2 border-gray-300 rounded-lg overflow-hidden'>
           {/* エディター */}
-          <div>
+          <div className='flex flex-col'>
             {/* エディター部分のヘッダー */}
             <div className='bg-gray-200 p-4 relative'>
               <div className='flex'>
@@ -142,7 +142,7 @@ export default function Edit() {
               </div>
             </div>
 
-            <div className='p-4  h-full'>
+            <div className='p-4 flex flex-col gap-3 flex-grow'>
               <div className='grid grid-rows-2 grid-cols-3 gap-1.5'>
                 <div className='w-full col-span-3 flex border-2 border-gray-300 rounded-lg overflow-hidden'>
                   <label
