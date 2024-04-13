@@ -1,6 +1,5 @@
 import { Report } from '@/app/_domain/model/report'
 import { User } from '@/app/_domain/model/user'
-import { Position } from '@/type/position';
 import { insertReport } from '@/app/_repository/report'
 
 type ReportResource = {
@@ -27,26 +26,6 @@ export function createReport(resource: ReportResource) {
   }
 
   return new Report(resource)
-}
-
-/**
- * UserのDomain Objectを作成する
- * @param name 
- * @param position 
- * @param studentId 
- * @returns 
- */
-export function createUser(
-  name: string,
-  position: Position,
-  studentId: string
-) {
-
-  if (studentId === null) {
-    throw new Error('Student ID is required.')
-  }
-
-  return new User(name, position, studentId)
 }
 
 /**
