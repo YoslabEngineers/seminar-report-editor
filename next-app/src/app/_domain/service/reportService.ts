@@ -23,7 +23,7 @@ export async function createReport(resource: ReportResource) {
     throw new Error('Author is required.')
   }
 
-  const res = await insertReport(resource)
+  const report = await insertReport(resource)
 
-  return new Report(res)
+  return report
 }
