@@ -23,7 +23,7 @@ export async function POST(request: NextRequest, { params }: { params: { student
   const studentId = params.studentId
 
   try {
-    const res = registerNewReport({ ...reqBody, seminarDate: new Date(reqBody.seminarDate), studentId: studentId })
+    const res = await registerNewReport({ ...reqBody, seminarDate: new Date(reqBody.seminarDate), studentId: studentId })
     
     if (res == "Student ID must be less than 8 characters.") {
       return new Response(res, { status: 400 })
@@ -33,7 +33,12 @@ export async function POST(request: NextRequest, { params }: { params: { student
       return new Response(res, { status: 400 })
     }
 
-    return new Response(JSON.stringify(res), { status: 200 })
+    if (res == "Report has been created.") {
+      return new Response(res, { status: 200 })
+    }
+
+    // 現状雑に書いてあるエラーハンドリングに関してはとりあえず500で返す
+    return new Response(res, { status: 500 })
 
   } catch (e) {
     if (e instanceof Error) {

@@ -1,8 +1,8 @@
 import { Report } from '@/app/_domain/model/report'
 import { User } from '@/app/_domain/model/user'
-import { insertReport } from '@/app/_repository/report'
+import { insertReport } from '@/app/_infrastructure/repository/report'
 
-type ReportResource = {
+export type ReportResource = {
   title: string
   seminarDate: Date
   author: User
@@ -13,27 +13,17 @@ type ReportResource = {
   isSubmitted: boolean
 }
 
-
 /**
  * ReportのDomain Objectを作成する
- * @param resource 
- * @returns 
+ * @param resource
+ * @returns
  */
-export function createReport(resource: ReportResource) {
-
+export async function createReport(resource: ReportResource) {
   if (resource.author === null) {
     throw new Error('Author is required.')
   }
 
-  return new Report(resource)
-}
+  const res = await insertReport(resource)
 
-/**
- * Reportを保存する
- * @param report 
- * @returns 
- */
-export function saveReport(report: Report) {
-  const res = insertReport(report)
-  return res
+  return new Report(res)
 }

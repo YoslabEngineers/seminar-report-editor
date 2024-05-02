@@ -1,5 +1,5 @@
 // アプリケーション層
-import { createReport, saveReport } from '@/app/_domain/service/reportService'
+import { createReport } from '@/app/_domain/service/reportService'
 import { createUser } from '@/app/_domain/service/userService'
 import { User } from '@/app/_domain/model/user'
 import { Position } from '@/type/position'
@@ -21,7 +21,7 @@ type RegisterNewReportRequest = {
  * @param request
  * @returns
  */
-export function registerNewReport(request: RegisterNewReportRequest) {
+export async function registerNewReport(request: RegisterNewReportRequest) {
   let report: Report
   let author: User
 
@@ -39,7 +39,9 @@ export function registerNewReport(request: RegisterNewReportRequest) {
 
   // ドメインサービスを呼び出し、リクエストデータを基にレポートのドメインオブジェクトを取得する
   try {
-    report = createReport({ ...request, author })
+    report = await createReport({ ...request, author })
+    const successResponse = `Report has been created.`
+    return successResponse
   } catch (e) {
     if (e instanceof Error && e.message == 'Author is required.') {
       return e.message
@@ -47,10 +49,4 @@ export function registerNewReport(request: RegisterNewReportRequest) {
       throw e
     }
   }
-
-  // ドメインサービスを呼び出し、取得したドメインオブジェクトの保存を依頼する
-  const res = saveReport(report)
-
-  // TODO: 成功/失敗を返す
-  return res
 }

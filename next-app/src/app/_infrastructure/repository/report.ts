@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { Report } from '@/app/_domain/model/report'
+import { ReportResource } from '../../_domain/service/reportService'
+import { reportFactory } from '../factory/report'
 const prisma = new PrismaClient()
 
 /**
@@ -23,20 +25,19 @@ export async function insertTest(title: string) {
 
 /**
  * Reportを登録する
- * @param report 
+ * @param report
  */
-export async function insertReport(report: Report) {
-
-  const title = report.getTitle()
-  const seminarDate = report.getSeminarDate()
-  const reportNumber = report.getReportNumber()
-  const pageNumber = report.getPageNumber()
-  const totalPages = report.getTotalPages()
-  const content = report.getContent()
-  const author = report.getAuthor()
+export async function insertReport(report: ReportResource) {
+  const title = report.title
+  const seminarDate = report.seminarDate
+  const reportNumber = report.reportNumber
+  const pageNumber = report.pageNumber
+  const totalPages = report.totalPages
+  const content = report.content
+  const author = report.author
 
   try {
-    const report = await prisma.reports.create({
+    const reportRow = await prisma.reports.create({
       data: {
         title: title,
         seminar_date: seminarDate,
@@ -46,10 +47,10 @@ export async function insertReport(report: Report) {
         contents_url: content,
       },
     })
-    return report
+
+    return reportFactory({...reportRow, author: author})
   } catch (e) {
     console.error(e)
-    return e
+    throw e
   }
-
 }
