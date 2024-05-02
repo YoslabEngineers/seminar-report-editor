@@ -21,7 +21,8 @@ services:
       - next_cache_volume:/app/.next
       - build_volume:/app/build:nocopy
     ports:
-      - 3000:3000
+      - 3000:3000 # Next.js(dev)
+      - 6006:6006 # Storybook
     restart: always
     depends_on: 
       - db
