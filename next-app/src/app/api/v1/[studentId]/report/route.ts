@@ -33,10 +33,6 @@ export async function POST(request: NextRequest, { params }: { params: { student
       return new Response(res, { status: 400 })
     }
 
-    if (res == 'Author is required.') {
-      return new Response(res, { status: 400 })
-    }
-
     return res ? new Response('ok', { status: 201 }) : new Response('bad request', { status: 500 })
   } catch (e) {
     if (e instanceof Error) {

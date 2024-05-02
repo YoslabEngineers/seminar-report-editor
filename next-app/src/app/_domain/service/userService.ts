@@ -8,19 +8,18 @@ import { Position } from '@/type/position';
  * @param studentId 
  * @returns 
  */
-export function createUser(
-  name: string,
-  position: Position,
-  studentId: string
-) {
-
-  if (studentId === null) {
-    throw new Error('Student ID is required.')
-  }
-
+export function getUser(studentId: string) {
   if (studentId.length > 8) {
     throw new Error('Student ID must be less than 8 characters.')
   }
 
-  return new User(name, position, studentId)
+  // TODO: dbにアクセスしてUser情報の取得
+  // const user = findUserByStudentId(studentId)
+  const user = new User('Sample User Name', 'B3' as Position, studentId)
+
+  if (user === null) {
+    throw new Error('User not found.')
+  }
+
+  return user
 }
