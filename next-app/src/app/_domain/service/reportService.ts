@@ -1,4 +1,3 @@
-import { Report } from '@/app/_domain/model/report'
 import { User } from '@/app/_domain/model/user'
 import { insertReport } from '@/app/_infrastructure/repository/report'
 
@@ -19,8 +18,8 @@ export type ReportResource = {
  * @returns
  */
 export async function createReport(resource: ReportResource) {
-  if (resource.author === null) {
-    throw new Error('Author is required.')
+  if (resource.title.length > 30) {
+    throw new Error('too long report title')
   }
 
   const report = await insertReport(resource)

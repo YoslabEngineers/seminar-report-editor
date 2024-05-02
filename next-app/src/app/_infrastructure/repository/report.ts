@@ -51,6 +51,6 @@ export async function insertReport(report: ReportResource) {
     return reportFactory({...reportRow, author: author})
   } catch (e) {
     console.error(e)
-    throw e
+    throw new Error('Prisma Error')
   }
 }

@@ -1,9 +1,6 @@
 // アプリケーション層
 import { createReport } from '@/app/_domain/service/reportService'
 import { getUser } from '@/app/_domain/service/userService'
-import { User } from '@/app/_domain/model/user'
-import { Position } from '@/type/position'
-import { Report } from '@/app/_domain/model/report'
 
 type RegisterNewReportRequest = {
   title: string
@@ -22,28 +19,9 @@ type RegisterNewReportRequest = {
  * @returns
  */
 export async function registerNewReport(request: RegisterNewReportRequest) {
-  let author: User
-
-  // Userドメインオブジェクトを作成(後でドメインサービスに移動する)
-  try {
-    author = getUser(request.studentId)
-  } catch (e) {
-    if (e instanceof Error && e.message == 'Student ID must be less than 8 characters.') {
-      return e.message
-    } else {
-      throw e
-    }
-  }
+  const author = getUser(request.studentId)
 
   // ドメインサービスを呼び出し、リクエストデータを基にレポートのドメインオブジェクトを取得する
-  try {
-    const report = await createReport({ ...request, author })
-    return report != null
-  } catch (e) {
-    if (e instanceof Error && e.message == 'Author is required.') {
-      return e.message
-    } else {
-    throw e
-    }
-  }
+  const report = await createReport({ ...request, author })
+  return report != null
 }
