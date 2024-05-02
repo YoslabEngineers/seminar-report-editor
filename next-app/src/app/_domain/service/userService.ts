@@ -1,5 +1,6 @@
 import { User } from '@/app/_domain/model/user'
 import { Position } from '@/type/position';
+import { UserNotFoundException } from '@/type/exception';
 
 /**
  * UserのDomain Objectを作成する
@@ -18,7 +19,7 @@ export function getUser(studentId: string) {
   const user = new User('Sample User Name', 'B3' as Position, studentId)
 
   if (user === null) {
-    throw new Error('User not found.')
+    throw new UserNotFoundException(`studentId: ${studentId}`)
   }
 
   return user
