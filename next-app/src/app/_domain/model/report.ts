@@ -2,6 +2,7 @@ import { User } from './user';
 
   
 interface IReport {
+  id: number
   title: string
   author: User
   seminarDate: Date
@@ -16,6 +17,7 @@ interface IReport {
  * Report（ゼミレポ）のドメインモデル
  */
 export class Report {
+  private id: number
   private title: string
   private readonly author: User
   private seminarDate: Date
@@ -26,6 +28,7 @@ export class Report {
   private isSubmitted: boolean
 
   constructor(report: IReport) {
+    this.id = report.id
     this.title = report.title
     this.author = report.author
     this.seminarDate = report.seminarDate
