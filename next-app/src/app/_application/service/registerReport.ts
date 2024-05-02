@@ -22,7 +22,6 @@ type RegisterNewReportRequest = {
  * @returns
  */
 export async function registerNewReport(request: RegisterNewReportRequest) {
-  let report: Report
   let author: User
 
   // Userドメインオブジェクトを作成(後でドメインサービスに移動する)
@@ -39,9 +38,8 @@ export async function registerNewReport(request: RegisterNewReportRequest) {
 
   // ドメインサービスを呼び出し、リクエストデータを基にレポートのドメインオブジェクトを取得する
   try {
-    report = await createReport({ ...request, author })
-    const successResponse = `Report has been created.`
-    return successResponse
+    const report = await createReport({ ...request, author })
+    return report != null
   } catch (e) {
     if (e instanceof Error && e.message == 'Author is required.') {
       return e.message
