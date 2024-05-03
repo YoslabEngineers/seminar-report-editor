@@ -4,8 +4,6 @@ import { UserNotFoundException } from '@/type/exception';
 
 /**
  * UserのDomain Objectを作成する
- * @param name 
- * @param position 
  * @param studentId 
  * @returns 
  */
@@ -16,7 +14,7 @@ export function getUser(studentId: string) {
 
   // TODO: dbにアクセスしてUser情報の取得
   // const user = findUserByStudentId(studentId)
-  const user = new User('Sample User Name', 'B3' as Position, studentId)
+  const user = new User(1, 'Sample User Name', 'B3' as Position, studentId)
 
   if (user === null) {
     throw new UserNotFoundException(`studentId: ${studentId}`)

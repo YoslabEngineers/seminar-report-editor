@@ -3,14 +3,16 @@ import { Position } from '@/type/position'
  * Userのドメインモデル
  */
 export class User {
-  private name: string
-  private position: Position
-  private readonly studentId: string
+  private readonly id: number;
+  private name: string;
+  private position: Position;
+  private readonly studentId: string;
 
-  constructor(name: string, position: Position, studentId: string) {
-    this.name = name
-    this.position = position
-    this.studentId = studentId
+  constructor(id: number, name: string, position: Position, studentId: string) {
+    this.id = id;
+    this.name = name;
+    this.position = position;
+    this.studentId = studentId;
   }
 
   setName(name: string) {
@@ -21,15 +23,19 @@ export class User {
     this.position = position
   }
 
+  getId(): number {
+    return this.id;
+  }
+
+  getStudentId(): string {
+    return this.studentId;
+  }
+
   getName(): string {
     return this.name
   }
 
   getPosition(): Position {
     return this.position
-  }
-
-  getStudentId(): string {
-    return this.studentId
   }
 }

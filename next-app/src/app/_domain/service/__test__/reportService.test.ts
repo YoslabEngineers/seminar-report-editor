@@ -18,7 +18,7 @@ jest.mock('@/src/app/_infrastructure/repository/report', () => ({
     }),
 }))
 
-const mockAuthor = new User('Sample User Name', 'B3', '12345678')
+const mockAuthor = new User(1,'Sample User Name', 'B3', '12345678')
 
 describe('createReport', () => {
 
