@@ -3,7 +3,7 @@ import { User } from '../../model/user'
 import { Report } from '../../model/report'
 import { describe, it, expect} from '@jest/globals'
 
-jest.mock('../../../_infrastructure/repository/report', () => ({
+jest.mock('@/src/app/_infrastructure/repository/report', () => ({
   insertReport: (resource: ReportResource) =>
     new Report({
       id: 1,

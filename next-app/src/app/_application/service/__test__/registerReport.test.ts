@@ -4,13 +4,13 @@ import { Report } from '../../../_domain/model/report'
 import { ReportResource } from '../../../_domain/service/reportService'
 import { registerNewReport } from '../registerReport'
 
-jest.mock('../../../_domain/service/userService.ts', () => ({
+jest.mock('@/src/app/_domain/service/userService.ts', () => ({
   getUser: (studentId: string) => {
     return new User('Sample User Name', 'B3', studentId)
   },
 }))
 
-jest.mock('../../../_domain/service/reportService.ts', () => ({
+jest.mock('@/src/app/_domain/service/reportService', () => ({
   createReport: (resource: ReportResource) => {
     if (resource.title.length > 30) {
       return null
