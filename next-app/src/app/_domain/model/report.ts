@@ -99,4 +99,8 @@ export class Report {
   getAuthor(): User {
     return this.author
   }
+
+  getIsSubmitted(): boolean {
+    return this.isSubmitted
+  }
 }
