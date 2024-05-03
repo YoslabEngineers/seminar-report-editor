@@ -32,6 +32,7 @@ jest.mock('@/src/app/_domain/service/reportService', () => ({
 
 describe('registerNewReport', () => {
   it('新しいReportを登録に成功してtrueを返す', async () => {
+    // given
     const request = {
       title: 'test title',
       seminarDate: new Date(),
@@ -43,12 +44,15 @@ describe('registerNewReport', () => {
       studentId: '12345678',
     }
 
+    // When
     const result = await registerNewReport(request)
 
+    // Then
     expect(result).toBe(true)
   })
 
   it('Reportが作成されない場合にfalseを返す', async () => {
+    // Given
     const request = {
       title: 'a'.repeat(31),
       seminarDate: new Date(),
@@ -60,8 +64,10 @@ describe('registerNewReport', () => {
       studentId: '12345678',
     }
 
+    // When
     const result = await registerNewReport(request)
 
+    // Then
     expect(result).toBe(false)
   })
 })

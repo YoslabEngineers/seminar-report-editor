@@ -18,14 +18,16 @@ jest.mock('@/src/app/_infrastructure/repository/report', () => ({
     }),
 }))
 
-describe('createReport', () => {
-  it('Reportのドメインモデルを返す', async () => {
-    const author = new User('Sample User Name', 'B3', '12345678')
+const mockAuthor = new User('Sample User Name', 'B3', '12345678')
 
-    const resource: ReportResource = {
+describe('createReport', () => {
+
+  it('Reportのドメインモデルを返す', async () => {
+    // Given
+    const mockResource: ReportResource = {
       title: 'test title',
       seminarDate: new Date(),
-      author: author,
+      author: mockAuthor,
       reportNumber: 1,
       pageNumber: 1,
       totalPages: 1,
@@ -33,9 +35,12 @@ describe('createReport', () => {
       isSubmitted: false,
     }
 
-    const report: Report = await createReport(resource)
+    // When
+    const report: Report = await createReport(mockResource)
+
+    // Then
     expect(report.getTitle()).toBe('test title')
-    expect(report.getAuthor()).toBe(author)
+    expect(report.getAuthor()).toBe(mockAuthor)
     expect(report.getReportNumber()).toBe(1)
     expect(report.getPageNumber()).toBe(1)
     expect(report.getTotalPages()).toBe(1)
@@ -44,12 +49,11 @@ describe('createReport', () => {
   })
 
   it('タイトルが30文字以上の場合は例外を投げる', async () => {
-    const author = new User('Sample User Name', 'B3', '12345678')
-
-    const resource: ReportResource = {
+    // Given
+    const mockResource: ReportResource = {
       title: 'a'.repeat(31),
       seminarDate: new Date(),
-      author: author,
+      author: mockAuthor,
       reportNumber: 1,
       pageNumber: 1,
       totalPages: 1,
@@ -57,6 +61,7 @@ describe('createReport', () => {
       isSubmitted: false,
     }
 
-    expect(createReport(resource)).rejects.toThrow('too long report title')
+    // When & Then
+    expect(createReport(mockResource)).rejects.toThrow('too long report title')
   })
 })
