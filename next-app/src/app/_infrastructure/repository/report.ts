@@ -1,6 +1,7 @@
 import prisma from '@/lib/prisma/client'
 import { ReportResource } from '../../_domain/service/reportService'
 import { reportFactory } from '../factory/report'
+import { Prisma } from '@prisma/client'
 
 /**
 タイトルを指定してレポートを登録する
@@ -26,27 +27,25 @@ export async function insertTest(title: string) {
  * @param report
  */
 export async function insertReport(report: ReportResource) {
-  const title = report.title
-  const seminarDate = report.seminarDate
-  const reportNumber = report.reportNumber
-  const pageNumber = report.pageNumber
-  const totalPages = report.totalPages
-  const content = report.content
-  const author = report.author
+  const reportInputData: Prisma.reportsCreateInput = {
+    title: report.title,
+    seminar_date: report.seminarDate,
+    report_num: report.reportNumber,
+    page_num: report.pageNumber,
+    total_pages: report.totalPages,
+    contents_url: report.content,
+    users: {
+      connect: { id: report.author.getId() },
+    },
+  }
+
 
   try {
     const reportRow = await prisma.reports.create({
-      data: {
-        title: title,
-        seminar_date: seminarDate,
-        report_num: reportNumber,
-        page_num: pageNumber,
-        total_pages: totalPages,
-        contents_url: content,
-      },
+      data: reportInputData,
     })
 
-    return reportFactory({ ...reportRow, author: author })
+    return reportFactory(reportRow,report.author)
   } catch (e) {
     console.error(e)
     throw new Error('Prisma Error')

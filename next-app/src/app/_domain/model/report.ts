@@ -68,6 +68,10 @@ export class Report {
     this.isSubmitted = true
   }
 
+  getId(): number {
+    return this.id
+  }
+
   getTitle(): string {
     return this.title
   }
