@@ -1,8 +1,6 @@
-import { PrismaClient } from '@prisma/client'
-import { Report } from '@/app/_domain/model/report'
+import prisma from '@/lib/prisma/client'
 import { ReportResource } from '../../_domain/service/reportService'
 import { reportFactory } from '../factory/report'
-const prisma = new PrismaClient()
 
 /**
 タイトルを指定してレポートを登録する
@@ -48,7 +46,7 @@ export async function insertReport(report: ReportResource) {
       },
     })
 
-    return reportFactory({...reportRow, author: author})
+    return reportFactory({ ...reportRow, author: author })
   } catch (e) {
     console.error(e)
     throw new Error('Prisma Error')
