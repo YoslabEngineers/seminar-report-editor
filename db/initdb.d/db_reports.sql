@@ -20,12 +20,12 @@ SET NAMES utf8mb4;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# テーブルのダンプ reports
+# テーブルのダンプ Reports
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `reports`;
+DROP TABLE IF EXISTS `Reports`;
 
-CREATE TABLE `reports` (
+CREATE TABLE `Reports` (
   `id` int NOT NULL AUTO_INCREMENT,
   `is_submitted` tinyint(1) DEFAULT '0',
   `title` text,
@@ -39,17 +39,17 @@ CREATE TABLE `reports` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-LOCK TABLES `reports` WRITE;
-/*!40000 ALTER TABLE `reports` DISABLE KEYS */;
+LOCK TABLES `Reports` WRITE;
+/*!40000 ALTER TABLE `Reports` DISABLE KEYS */;
 
-INSERT INTO `reports` (`id`, `is_submitted`, `title`, `seminar_date`, `user_id`, `report_num`, `page_num`, `total_pages`, `contents_url`, `created_at`, `updated_at`)
+INSERT INTO `Reports` (`id`, `is_submitted`, `title`, `seminar_date`, `user_id`, `report_num`, `page_num`, `total_pages`, `contents_url`, `created_at`, `updated_at`)
 VALUES
 	(1,0,'sample title','2021-01-01 00:00:00',NULL,1,1,1,'sample path','2024-04-12 11:02:17','2024-04-12 11:02:17');
 
-/*!40000 ALTER TABLE `reports` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Reports` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

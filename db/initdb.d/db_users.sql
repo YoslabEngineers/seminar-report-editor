@@ -20,12 +20,12 @@ SET NAMES utf8mb4;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# テーブルのダンプ users
+# テーブルのダンプ Users
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `Users`;
 
-CREATE TABLE `users` (
+CREATE TABLE `Users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `student_id` text,
   `name` text,
