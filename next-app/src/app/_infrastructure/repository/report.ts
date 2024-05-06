@@ -1,7 +1,7 @@
 import prisma from '@/lib/prisma/client'
 import { ReportResource } from '../../_domain/service/reportService'
 import { reportFactory } from '../factory/report'
-import { Prisma } from '@prisma/client'
+import type { Prisma } from '@prisma/client'
 
 /**
 タイトルを指定してレポートを登録する

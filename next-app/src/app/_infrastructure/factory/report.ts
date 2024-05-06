@@ -1,5 +1,5 @@
 import { Report } from '@/app/_domain/model/report'
-import { Prisma } from '@prisma/client'
+import type { Prisma } from '@prisma/client'
 import prisma from '@/lib/prisma/client'
 import { User } from '@/app/_domain/model/user'
 
