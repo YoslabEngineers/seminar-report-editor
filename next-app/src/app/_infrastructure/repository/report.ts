@@ -4,25 +4,6 @@ import { reportFactory } from '../factory/report'
 import type { Prisma } from '@prisma/client'
 
 /**
-タイトルを指定してレポートを登録する
-@param title
-@returns
-*/
-export async function insertTest(title: string) {
-  try {
-    const report = await prisma.reports.create({
-      data: {
-        title: title,
-      },
-    })
-    return report
-  } catch (e) {
-    console.error(e)
-    return e
-  }
-}
-
-/**
  * Reportを登録する
  * @param report
  */
