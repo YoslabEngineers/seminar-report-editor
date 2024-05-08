@@ -1,22 +1,9 @@
 import { insertReport } from '../report'
-import { prismaMock } from '../../../../lib/prisma/singleton'
 import { describe, it, expect } from '@jest/globals'
 import { User } from '../../../_domain/model/user'
 
+
 describe('insertReport', () => {
-  prismaMock.reports.create.mockResolvedValue({
-    id: 1,
-    is_submitted: false,
-    title: 'サンプルタイトル',
-    seminar_date: new Date(),
-    user_id: 1,
-    report_num: 1,
-    page_num: 1,
-    total_pages: 1,
-    contents_url: 'レポートの内容',
-    created_at: new Date(),
-    updated_at: new Date(),
-  })
 
   it('DB', async () => {
     // Given
