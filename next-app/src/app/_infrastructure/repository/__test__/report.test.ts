@@ -23,6 +23,7 @@ describe('insertReport', () => {
     const report = await insertReport(mockReportResource)
     console.log(report)
     // Then
+    // TODO: reportIDのテスト実行ごとに変化するためどうにかする
     expect(report.getId()).toBe(1)
     expect(report.getTitle()).toBe('サンプルタイトル')
     expect(report.getAuthor()).toBe(mockAuthor)
