@@ -37,6 +37,9 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+INSERT INTO `Users` (`id`, `student_id`, `name`, `position`, `created_at`, `updated_at`, `pass`)
+VALUES
+	(1,'12345678','Sample User Name','B3','2024-05-08 12:29:24','2024-05-08 12:29:28','pass');
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
