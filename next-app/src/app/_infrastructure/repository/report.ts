@@ -8,14 +8,14 @@ import type { Prisma } from '@prisma/client'
  * @param report
  */
 export async function insertReport(report: ReportResource) {
-  const reportInputData: Prisma.reportsCreateInput = {
+  const reportInputData: Prisma.ReportsCreateInput = {
     title: report.title,
     seminar_date: report.seminarDate,
     report_num: report.reportNumber,
     page_num: report.pageNumber,
     total_pages: report.totalPages,
     contents_url: report.content,
-    users: {
+    Users: {
       connect: { id: report.author.getId() },
     },
   }
