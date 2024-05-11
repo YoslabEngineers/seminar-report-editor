@@ -26,6 +26,7 @@ services:
     restart: always
     depends_on: 
       - db
+      - test-db
   
   db:
     image: mysql:8.2.0-oracle
@@ -39,6 +40,19 @@ services:
       - ./db/initdb.d:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
+
+  test-db:
+    image: mysql:8.2.0-oracle
+    container_name: test-mysql
+    env_file:
+      - ./db/.env
+    networks:
+      - app_network
+    volumes:
+      - ./db/test-data:/var/lib/mysql
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 3307:3307
 
 volumes:
   next_cache_volume:
