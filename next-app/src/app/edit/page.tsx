@@ -2,8 +2,13 @@ import ReportEditor from '../_components/ReportEditor'
 import ReportPreview from '../_components/ReportPreview'
 import LayoutSwitcher from '../_components/LayoutSwitcher'
 import PageHeader from '../_components/PageHeader'
+import {getReport} from './service'
 
 export default function Edit() {
+  // レポートのデータを取得
+  const report = getReport()
+  console.log(report)
+  
   return (
     <main className='w-full h-screen bg-white text-black flex flex-col items-center'>
       {/* ヘッダー */}
