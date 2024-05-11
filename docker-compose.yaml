@@ -52,7 +52,7 @@ services:
       - ./db/test-data:/var/lib/mysql
       - ./db/initdb.d:/docker-entrypoint-initdb.d
     ports:
-      - 3307:3307
+      - 3307:3306
 
 volumes:
   next_cache_volume:
