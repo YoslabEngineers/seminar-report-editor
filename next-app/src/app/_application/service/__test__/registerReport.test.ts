@@ -32,7 +32,7 @@ jest.mock('@/src/app/_domain/service/reportService', () => ({
 
 describe('registerNewReport', () => {
   it('新しいReportを登録に成功してtrueを返す', async () => {
-    // given
+    // Given
     const request = {
       title: 'test title',
       seminarDate: new Date(),

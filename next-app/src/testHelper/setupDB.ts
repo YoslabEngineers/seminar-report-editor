@@ -2,7 +2,10 @@ import prisma from '@/lib/prisma/client'
 import { PrismaPromise } from '@prisma/client'
 import type { Prisma } from '@prisma/client'
 
-beforeAll(async () => {
+
+export const setTable = async () => {
+  console.log('DATABASE_URL')
+  console.log(process.env.DATABASE_URL)
   // Usersテーブルに仮のデータの挿入
   const userInputData: Prisma.UsersCreateInput = {
     student_id: 's206000',
@@ -18,9 +21,9 @@ beforeAll(async () => {
   } catch (error) {
     console.error(error)
   }
-})
+}
 
-afterAll(async () => {
+export const clearTable = async () => {
   // Reports・Usersテーブルのクリーンアップ
   const transactions: PrismaPromise<any>[] = []
   transactions.push(prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 0;`)
@@ -33,4 +36,4 @@ afterAll(async () => {
   } catch (error) {
     console.log({ error })
   }
-})
+}
