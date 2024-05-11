@@ -29,4 +29,8 @@ export class User {
     return this.position;
   }
 
+  getStudentId(): string {
+    return this.studentId;
+  }
+
 }
