@@ -44,11 +44,6 @@ CREATE TABLE `Reports` (
 
 LOCK TABLES `Reports` WRITE;
 /*!40000 ALTER TABLE `Reports` DISABLE KEYS */;
-
-INSERT INTO `Reports` (`id`, `is_submitted`, `title`, `seminar_date`, `user_id`, `report_num`, `page_num`, `total_pages`, `contents_url`, `created_at`, `updated_at`)
-VALUES
-	(1,0,'sample title','2021-01-01 00:00:00',NULL,1,1,1,'sample path','2024-04-12 11:02:17','2024-04-12 11:02:17');
-
 /*!40000 ALTER TABLE `Reports` ENABLE KEYS */;
 UNLOCK TABLES;
 
