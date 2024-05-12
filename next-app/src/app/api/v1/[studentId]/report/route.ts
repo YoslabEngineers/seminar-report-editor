@@ -45,7 +45,7 @@ export async function POST(request: NextRequest, { params }: { params: { student
       case 'Student ID must be less than 8 characters.':
         return new Response('Student ID must be less than 8 characters.', { status: 400 })
       default:
-        return new Response('bad request', { status: 500 })
+        return new Response('internal server error', { status: 500 })
     }
   }
 }
