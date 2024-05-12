@@ -3,7 +3,6 @@ import ReportPreview from '../_components/ReportPreview'
 import LayoutSwitcher from '../_components/LayoutSwitcher'
 import PageHeader from '../_components/PageHeader'
 import { getReport, postReport } from './service'
-import { User } from '../_domain/model/user'
 
 export default function Edit() {
   // レポートのデータを取得
@@ -11,8 +10,7 @@ export default function Edit() {
   // console.log(report)
 
   // レポートのデータを保存
-  const user = new User('和大 太郎', 'B4', '12345678')
-  postReport(report, user)
+  postReport(report)
 
   return (
     <main className='w-full h-screen bg-white text-black flex flex-col items-center'>

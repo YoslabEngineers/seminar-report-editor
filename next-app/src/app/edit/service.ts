@@ -23,9 +23,8 @@ export const getReport = (reportId?: number) => {
   return new Report(false, 'タイトル', new Date(), user, 1, 1, 1, '内容')
 }
 
-export const postReport = async (report: Report, user: User) => {
-
-  const requestBody/*: ReportPostRequest*/ = {
+export const postReport = async (report: Report) => {
+  const requestBody /*: ReportPostRequest*/ = {
     title: report.getTitle(),
     seminarDate: report.getSeminarDate().toISOString(),
     reportNumber: report.getReportNumber(),
@@ -34,6 +33,9 @@ export const postReport = async (report: Report, user: User) => {
     content: report.getContent(),
     isSubmitted: report.getIsSubmitted(),
   }
+
+  // 学生番号を取得するためにUserを取得
+  const user = report.getAuthor()
 
   const res = await fetch(`${process.env.BASE_URL}/api/v1/${user.getStudentId()}/report`, {
     method: 'POST',
