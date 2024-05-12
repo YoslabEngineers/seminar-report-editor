@@ -1,6 +1,7 @@
 import { testApiHandler } from 'next-test-api-route-handler'
 import { describe, expect, test, beforeEach } from '@jest/globals'
 import { registerNewReport } from '../../../../../_application/service/registerReport'
+import { UserNotFoundException } from '../../../../../../type/exception'
 import * as appHandler from '../route'
 
 jest.mock('@/src/app/_application/service/registerReport.ts', () => ({
@@ -51,4 +52,33 @@ describe('API: POST api/vi/[studentId]/report', () => {
       })
     },
   )
+
+  test.each`
+    error                                                       | expected
+    ${new UserNotFoundException(`studentId: ${mockStudentId}`)} | ${404}
+    ${new Error('too long report title')}                       | ${400}
+    ${new Error('Student ID must be less than 8 characters.')}  | ${400}
+    ${new Error()}                                              | ${500}
+  `('$error が発生したとき，statusが $expected を返すかどうか', async ({ error, expected }) => {
+    registerNewReport.mockImplementation(() => {
+      throw error
+    })
+
+    // When
+    await testApiHandler({
+      paramsPatcher: (params) => ({ studentId: mockStudentId }),
+      appHandler,
+      async test({ fetch }) {
+        const res = await fetch({
+          method: 'POST',
+          body: JSON.stringify({
+            mockReqBody,
+          }),
+        })
+
+        // Then
+        expect(res.status).toBe(expected)
+      },
+    })
+  })
 })
