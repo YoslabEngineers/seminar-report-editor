@@ -1,4 +1,4 @@
-import { describe, it, expect } from '@jest/globals'
+import { describe, it, expect, test } from '@jest/globals'
 import { User } from '../../../_domain/model/user'
 import { Report } from '../../../_domain/model/report'
 import { ReportResource } from '../../../_domain/service/reportService'
@@ -31,10 +31,14 @@ jest.mock('@/src/app/_domain/service/reportService', () => ({
 }))
 
 describe('registerNewReport', () => {
-  it('新しいReportを登録に成功してtrueを返す', async () => {
+  test.each`
+    titleLength | expected
+    ${30}       | ${true}
+    ${31}       | ${false}
+  `('titleLengthが $titleLength の場合、$expected を返す', async ({ titleLength, expected }) => {
     // Given
     const request = {
-      title: 'test title',
+      title: 'a'.repeat(titleLength as number),
       seminarDate: new Date(),
       reportNumber: 1,
       pageNumber: 1,
@@ -48,26 +52,6 @@ describe('registerNewReport', () => {
     const result = await registerNewReport(request)
 
     // Then
-    expect(result).toBe(true)
-  })
-
-  it('Reportが作成されない場合にfalseを返す', async () => {
-    // Given
-    const request = {
-      title: 'a'.repeat(31),
-      seminarDate: new Date(),
-      reportNumber: 1,
-      pageNumber: 1,
-      totalPages: 1,
-      content: '',
-      isSubmitted: false,
-      studentId: '12345678',
-    }
-
-    // When
-    const result = await registerNewReport(request)
-
-    // Then
-    expect(result).toBe(false)
+    expect(result).toBe(expected)
   })
 })
