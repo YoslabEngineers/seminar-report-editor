@@ -6,7 +6,7 @@ import { registerNewReport } from '../registerReport'
 
 jest.mock('@/src/app/_domain/service/userService.ts', () => ({
   getUser: (studentId: string) => {
-    return new User('Sample User Name', 'B3', studentId)
+    return new User(1, 'Sample User Name', 'B3', studentId)
   },
 }))
 

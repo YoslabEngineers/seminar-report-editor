@@ -1,4 +1,4 @@
-import { User } from '@/app/_domain/model/user';
+import { User } from '@/app/_domain/model/user'
 
 interface IReport {
   id: number
@@ -101,9 +101,5 @@ export class Report {
 
   getAuthor(): User {
     return this.author
-  }
-
-  getIsSubmitted(): boolean {
-    return this.isSubmitted
   }
 }
