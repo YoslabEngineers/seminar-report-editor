@@ -4,8 +4,6 @@ import type { Prisma } from '@prisma/client'
 
 
 export const setTable = async () => {
-  console.log('DATABASE_URL')
-  console.log(process.env.DATABASE_URL)
   // Usersテーブルに仮のデータの挿入
   const userInputData: Prisma.UsersCreateInput = {
     student_id: 's206000',
