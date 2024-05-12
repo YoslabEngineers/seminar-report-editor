@@ -8,7 +8,7 @@ describe('insertReport', () => {
   beforeEach(setTable)
   afterEach(clearTable)
 
-  it('DB', async () => {
+  it('ReportをDBに格納してドメインオブジェクトを取得する', async () => {
     // Given
     const mockAuthor = new User(1, 'Sample User Name', 'B3', '12345678')
     const mockReportResource = {
