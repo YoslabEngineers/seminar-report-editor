@@ -4,7 +4,7 @@
 import { Report } from '@/app/_domain/model/report'
 import { User } from '@/app/_domain/model/user'
 
-export const getReport = ({ user, reportId }: { user: User; reportId?: number }) => {
+export const getReport = ({ user, reportId }: { user: User, reportId?: number }) => {
   if (!reportId) {
     //TODO: ドメイン層に実装
     // getDraftReport()

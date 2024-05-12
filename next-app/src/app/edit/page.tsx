@@ -23,7 +23,7 @@ export default function Edit() {
       <div className='w-full h-full p-6 relative'>
         <div className='w-full h-full grid grid-cols-2 justify-between gap-0 border-2 border-gray-300 rounded-lg overflow-hidden'>
           {/* エディター */}
-          <ReportEditor />
+          <ReportEditor report={report} />
 
           {/* プレビュー */}
           <ReportPreview />
