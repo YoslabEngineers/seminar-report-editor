@@ -4,10 +4,7 @@
 import { Report } from '@/app/_domain/model/report'
 import { User } from '@/app/_domain/model/user'
 
-export const getReport = (reportId?: number) => {
-  // いったんダミーデータを返します
-  const user = new User('和大 太郎', 'B4', '12345678')
-
+export const getReport = ({ user, reportId }: { user: User; reportId?: number }) => {
   if (!reportId) {
     //TODO: ドメイン層に実装
     // getDraftReport()
