@@ -1,32 +1,35 @@
-import { Position } from '@/type/position';
+import { Position } from '@/type/position'
 /**
  * Userのドメインモデル
  */
 export class User {
-  private name: string;
-  private position: Position;
-  private readonly studentId: string;
+  private name: string
+  private position: Position
+  private readonly studentId: string
 
   constructor(name: string, position: Position, studentId: string) {
-    this.name = name;
-    this.position = position;
-    this.studentId = studentId;
+    this.name = name
+    this.position = position
+    this.studentId = studentId
   }
 
   setName(name: string) {
-    this.name = name;
+    this.name = name
   }
-  
+
   setPosition(position: Position) {
-    this.position = position;
+    this.position = position
   }
 
   getName(): string {
-    return this.name;
+    return this.name
   }
 
   getPosition(): Position {
-    return this.position;
+    return this.position
   }
 
+  getStudentId(): string {
+    return this.studentId
+  }
 }
