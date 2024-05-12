@@ -1,7 +1,7 @@
-import ReportEditor from '../_components/ReportEditor'
-import ReportPreview from '../_components/ReportPreview'
-import LayoutSwitcher from '../_components/LayoutSwitcher'
-import PageHeader from '../_components/PageHeader'
+import ReportEditor from '@/app/_components/ReportEditor'
+import ReportPreview from '@/app/_components/ReportPreview'
+import LayoutSwitcher from '@/app/_components/LayoutSwitcher'
+import PageHeader from '@/app/_components/PageHeader'
 import { getReport, postReport } from './service'
 
 export default function Edit() {
