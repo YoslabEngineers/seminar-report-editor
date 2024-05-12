@@ -1,6 +1,5 @@
-import { User } from './user';
+import { User } from '@/app/_domain/model/user';
 
-  
 interface IReport {
   id: number
   title: string

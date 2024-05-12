@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma/client'
-import { ReportResource } from '../../_domain/service/reportService'
-import { reportFactory } from '../factory/report'
+import { ReportResource } from '@/app/_domain/service/reportService'
+import { reportFactory } from '@/app/_infrastructure/factory/report'
 import type { Prisma } from '@prisma/client'
 
 /**
