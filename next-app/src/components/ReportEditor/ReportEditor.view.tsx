@@ -17,7 +17,19 @@ import IconReportNum from '@assets/icons/report_num.svg'
 import IconPageNum from '@assets/icons/page_num.svg'
 import IconDate from '@assets/icons/date.svg'
 
-export const ReportEditorView = () => {
+export const ReportEditorView = ({
+  pageNumber,
+  reportNumber,
+  content,
+  seminarDate,
+  title,
+}: {
+  pageNumber: string
+  reportNumber: string
+  content: string
+  seminarDate: string
+  title: string
+}) => {
   return (
     <>
       <div className='flex flex-col'>
@@ -119,7 +131,7 @@ export const ReportEditorView = () => {
               </label>
               <input
                 type='text'
-                value='レポートタイトル'
+                value={title}
                 name='report-title'
                 className='w-full pl-3'
               />
@@ -136,7 +148,7 @@ export const ReportEditorView = () => {
               </label>
               <input
                 type='text'
-                value='123'
+                value={reportNumber}
                 name='report-number'
                 className='w-full text-left pl-3'
               />
@@ -153,7 +165,7 @@ export const ReportEditorView = () => {
               </label>
               <input
                 type='text'
-                value='100'
+                value={pageNumber}
                 name='report-page-number'
                 className='w-full text-left pl-3'
               />
@@ -170,7 +182,7 @@ export const ReportEditorView = () => {
               </label>
               <input
                 type='text'
-                value='2024/04/01'
+                value={seminarDate}
                 name='report-date'
                 className='w-full text-left pl-3'
               />
@@ -182,7 +194,7 @@ export const ReportEditorView = () => {
             <textarea
               name='report-area'
               className='w-full h-full bg-gray-100 overflow-hidden text-base'>
-              レポート入力部分．．．
+              {content}
             </textarea>
           </div>
         </div>
