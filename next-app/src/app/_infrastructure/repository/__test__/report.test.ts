@@ -24,7 +24,7 @@ describe('insertReport', () => {
 
     // When
     const report = await insertReport(mockReportResource)
-    console.log(report)
+    
     // Then
     expect(report.getId()).toBe(1)
     expect(report.getTitle()).toBe('サンプルタイトル')
