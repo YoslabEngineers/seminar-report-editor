@@ -1,9 +1,9 @@
 import { createReport, ReportResource } from '../reportService'
 import { User } from '../../model/user'
 import { Report } from '../../model/report'
-import { describe, it, expect} from '@jest/globals'
+import { describe, it, expect } from '@jest/globals'
 
-jest.mock('@/src/app/_infrastructure/repository/report', () => ({
+jest.mock('@/src/infrastructure/repository/report', () => ({
   insertReport: (resource: ReportResource) =>
     new Report({
       id: 1,
@@ -18,10 +18,9 @@ jest.mock('@/src/app/_infrastructure/repository/report', () => ({
     }),
 }))
 
-const mockAuthor = new User(1,'Sample User Name', 'B3', '12345678')
+const mockAuthor = new User(1, 'Sample User Name', 'B3', '12345678')
 
 describe('createReport', () => {
-
   it('Reportのドメインモデルを返す', async () => {
     // Given
     const mockResource: ReportResource = {

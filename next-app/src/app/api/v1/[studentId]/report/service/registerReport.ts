@@ -1,6 +1,6 @@
 // アプリケーション層
-import { createReport } from '@/app/_domain/service/reportService'
-import { getUser } from '@/app/_domain/service/userService'
+import { createReport } from '@/domain/service/reportService'
+import { getUser } from '@/domain/service/userService'
 
 type RegisterNewReportRequest = {
   title: string
