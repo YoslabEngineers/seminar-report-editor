@@ -10,14 +10,34 @@ export const getReport = ({ user, reportId }: { user: User; reportId?: number })
     // getDraftReport()
 
     // いったんダミーデータを返します
-    return new Report(false, 'タイトル', new Date(), user, 1, 1, 1, '内容')
+    return new Report({
+      id: 1,
+      title: 'タイトル',
+      author: user,
+      seminarDate: new Date(),
+      reportNumber: 1,
+      pageNumber: 1,
+      totalPages: 1,
+      content: '内容',
+      isSubmitted: false,
+    })
   }
 
   //TODO: ドメイン層に実装
   // getReportById(reportId)
 
   // いったんダミーデータを返します
-  return new Report(false, 'タイトル', new Date(), user, 1, 1, 1, '内容')
+  return new Report({
+    id: 1,
+    title: 'タイトル',
+    author: user,
+    seminarDate: new Date(),
+    reportNumber: 1,
+    pageNumber: 1,
+    totalPages: 1,
+    content: '内容',
+    isSubmitted: false,
+  })
 }
 
 export const postReport = async (report: Report) => {
