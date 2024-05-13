@@ -1,11 +1,11 @@
-import { User } from '@/app/_domain/model/user'
-import { Position } from '@/type/position';
-import { UserNotFoundException } from '@/type/exception';
+import { User } from '@/domain/model/user'
+import { Position } from '@/type/position'
+import { UserNotFoundException } from '@/type/exception'
 
 /**
  * UserのDomain Objectを作成する
- * @param studentId 
- * @returns 
+ * @param studentId
+ * @returns
  */
 export function getUser(studentId: string) {
   if (studentId.length > 8) {

@@ -1,8 +1,8 @@
 // ページで扱うデータの管理をします！
 // reportIdはクエリパラメータ　無い可能性もある
 
-import { Report } from '@/app/_domain/model/report'
-import { User } from '@/app/_domain/model/user'
+import { Report } from '@/domain/model/report'
+import { User } from '@/domain/model/user'
 
 export const getReport = ({ user, reportId }: { user: User; reportId?: number }) => {
   if (!reportId) {

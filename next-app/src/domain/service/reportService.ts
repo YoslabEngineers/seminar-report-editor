@@ -1,5 +1,5 @@
-import { User } from '@/app/_domain/model/user'
-import { insertReport } from '@/app/_infrastructure/repository/report'
+import { User } from '@/domain/model/user'
+import { insertReport } from '@/infrastructure/repository/report'
 
 export type ReportResource = {
   title: string

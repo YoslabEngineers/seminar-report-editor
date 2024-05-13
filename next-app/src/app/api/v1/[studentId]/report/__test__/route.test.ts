@@ -1,10 +1,10 @@
 import { testApiHandler } from 'next-test-api-route-handler'
 import { describe, expect, test, beforeEach } from '@jest/globals'
-import { registerNewReport } from '../../../../../_application/service/registerReport'
+import { registerNewReport } from '../../../../../../application/service/registerReport'
 import { UserNotFoundException } from '../../../../../../type/exception'
 import * as appHandler from '../route'
 
-jest.mock('@/src/app/_application/service/registerReport.ts', () => ({
+jest.mock('@/src/application/service/registerReport.ts', () => ({
   registerNewReport: jest.fn(() => true),
 }))
 

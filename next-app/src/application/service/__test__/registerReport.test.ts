@@ -1,16 +1,16 @@
 import { describe, it, expect, test } from '@jest/globals'
-import { User } from '../../../_domain/model/user'
-import { Report } from '../../../_domain/model/report'
-import { ReportResource } from '../../../_domain/service/reportService'
+import { User } from '../../../domain/model/user'
+import { Report } from '../../../domain/model/report'
+import { ReportResource } from '../../../domain/service/reportService'
 import { registerNewReport } from '../registerReport'
 
-jest.mock('@/src/app/_domain/service/userService.ts', () => ({
+jest.mock('@/src/domain/service/userService.ts', () => ({
   getUser: (studentId: string) => {
     return new User(1, 'Sample User Name', 'B3', studentId)
   },
 }))
 
-jest.mock('@/src/app/_domain/service/reportService', () => ({
+jest.mock('@/src/domain/service/reportService', () => ({
   createReport: (resource: ReportResource) => {
     if (resource.title.length > 30) {
       return null
