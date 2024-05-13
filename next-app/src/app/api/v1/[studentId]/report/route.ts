@@ -1,5 +1,5 @@
 import type { NextRequest } from 'next/server'
-import { registerNewReport } from '@/application/service/registerReport'
+import { registerNewReport } from './service/registerReport'
 import { UserNotFoundException } from '@/type/exception'
 
 type ReportPostRequest = {

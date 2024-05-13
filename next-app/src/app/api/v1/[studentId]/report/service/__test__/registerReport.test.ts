@@ -1,7 +1,7 @@
 import { describe, it, expect, test } from '@jest/globals'
-import { User } from '../../../domain/model/user'
-import { Report } from '../../../domain/model/report'
-import { ReportResource } from '../../../domain/service/reportService'
+import { User } from '../../../../../../../domain/model/user'
+import { Report } from '../../../../../../../domain/model/report'
+import { ReportResource } from '../../../../../../../domain/service/reportService'
 import { registerNewReport } from '../registerReport'
 
 jest.mock('@/src/domain/service/userService.ts', () => ({
