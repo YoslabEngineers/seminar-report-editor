@@ -17,18 +17,30 @@ import IconReportNum from '@assets/icons/report_num.svg'
 import IconPageNum from '@assets/icons/page_num.svg'
 import IconDate from '@assets/icons/date.svg'
 
+import { ChangeEvent } from 'react'
+
 export const ReportEditorView = ({
   pageNumber,
   reportNumber,
   content,
   seminarDate,
   title,
+  handlePageNumberChange,
+  handleReportNumberChange,
+  handleContentChange,
+  handleSeminarDateChange,
+  handleTitleChange,
 }: {
   pageNumber: string
   reportNumber: string
   content: string
   seminarDate: string
   title: string
+  handlePageNumberChange: (e: ChangeEvent<HTMLInputElement>) => void
+  handleReportNumberChange: (e: ChangeEvent<HTMLInputElement>) => void
+  handleContentChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
+  handleSeminarDateChange: (e: ChangeEvent<HTMLInputElement>) => void
+  handleTitleChange: (e: ChangeEvent<HTMLInputElement>) => void
 }) => {
   return (
     <>
@@ -131,9 +143,10 @@ export const ReportEditorView = ({
               </label>
               <input
                 type='text'
-                value={title}
+                defaultValue={title}
                 name='report-title'
                 className='w-full pl-3'
+                onChange={handleTitleChange}
               />
             </div>
             <div className='w-full col-span-1 flex border-2 border-gray-300 rounded-lg overflow-hidden'>
@@ -148,9 +161,10 @@ export const ReportEditorView = ({
               </label>
               <input
                 type='text'
-                value={reportNumber}
+                defaultValue={reportNumber}
                 name='report-number'
                 className='w-full text-left pl-3'
+                onChange={handleReportNumberChange}
               />
             </div>
             <div className='w-full col-span-1 flex border-2 border-gray-300 rounded-lg overflow-hidden'>
@@ -165,9 +179,10 @@ export const ReportEditorView = ({
               </label>
               <input
                 type='text'
-                value={pageNumber}
+                defaultValue={pageNumber}
                 name='report-page-number'
                 className='w-full text-left pl-3'
+                onChange={handlePageNumberChange}
               />
             </div>
             <div className='w-full col-span-1 flex border-2 border-gray-300 rounded-lg overflow-hidden'>
@@ -182,9 +197,10 @@ export const ReportEditorView = ({
               </label>
               <input
                 type='text'
-                value={seminarDate}
+                defaultValue={seminarDate}
                 name='report-date'
                 className='w-full text-left pl-3'
+                onChange={handleSeminarDateChange}
               />
             </div>
           </div>
@@ -193,7 +209,8 @@ export const ReportEditorView = ({
           <div className='flex-grow'>
             <textarea
               name='report-area'
-              className='w-full h-full bg-gray-100 overflow-hidden text-base'>
+              className='w-full h-full bg-gray-100 overflow-hidden text-base'
+              onChange={handleContentChange}>
               {content}
             </textarea>
           </div>
