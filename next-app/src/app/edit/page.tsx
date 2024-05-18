@@ -1,3 +1,5 @@
+"use client"
+
 import ReportEditor from '@/app/_components/ReportEditor'
 import ReportPreview from '@/app/_components/ReportPreview'
 import LayoutSwitcher from '@/app/_components/LayoutSwitcher'
