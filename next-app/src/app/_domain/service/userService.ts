@@ -1,11 +1,12 @@
 import { User } from '@/app/_domain/model/user'
-import { Position } from '@/type/position';
-import { UserNotFoundException } from '@/type/exception';
+import { Position } from '@/type/position'
+import { UserNotFoundException } from '@/type/exception'
+import { insertUser } from '@/app/_infrastructure/repository/user'
 
 /**
  * UserのDomain Objectを作成する
- * @param studentId 
- * @returns 
+ * @param studentId
+ * @returns
  */
 export function getUser(studentId: string) {
   if (studentId.length > 8) {
@@ -20,5 +21,17 @@ export function getUser(studentId: string) {
     throw new UserNotFoundException(`studentId: ${studentId}`)
   }
 
+  return user
+}
+
+/**
+ * Userを追加する
+ * @param user
+ */
+export function addUser(studentId: string, name: string, email: string, position: string, password: string) {
+  // TODO: emailのバリデーション
+  // TODO: passwordのハッシュ化
+  // TODO: dbにアクセスしてUser情報の追加
+  const user = insertUser(studentId, name, email, position, password)
   return user
 }
