@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma/client'
-import { ReportResource } from '@/app/_domain/service/reportService'
-import { reportFactory } from '@/app/_infrastructure/factory/report'
+import { ReportResource } from '@/domain/service/reportService'
+import { reportFactory } from '@/infrastructure/factory/report'
 import type { Prisma } from '@prisma/client'
 
 /**
@@ -20,13 +20,12 @@ export async function insertReport(report: ReportResource) {
     },
   }
 
-
   try {
     const reportRow = await prisma.reports.create({
       data: reportInputData,
     })
 
-    return reportFactory(reportRow,report.author)
+    return reportFactory(reportRow, report.author)
   } catch (e) {
     console.error(e)
     throw new Error('Prisma Error')

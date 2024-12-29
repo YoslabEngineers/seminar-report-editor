@@ -1,7 +1,7 @@
 import { insertReport } from '../report'
 import { describe, it, expect, beforeEach, afterEach } from '@jest/globals'
-import { User } from '../../../_domain/model/user'
-import { clearTable, setTable } from '../../../../testHelper/setupDB'
+import { User } from '../../../domain/model/user'
+import { clearTable, setTable } from '../../../testHelper/setupDB'
 
 describe('insertReport', () => {
 
