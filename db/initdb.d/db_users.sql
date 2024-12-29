@@ -7,7 +7,7 @@
 #
 # ホスト: localhost (MySQL 8.2.0)
 # データベース: db
-# 生成時間: 2024-04-06 15:49:50 +0000
+# 生成時間: 2024-04-12 11:09:56 +0000
 # ************************************************************
 
 
@@ -20,30 +20,21 @@ SET NAMES utf8mb4;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# テーブルのダンプ reports
+# テーブルのダンプ Users
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `reports`;
+DROP TABLE IF EXISTS `Users`;
 
-CREATE TABLE `reports` (
+CREATE TABLE `Users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` text,
+  `student_id` text,
+  `name` text,
+  `position` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `pass` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-LOCK TABLES `reports` WRITE;
-/*!40000 ALTER TABLE `reports` DISABLE KEYS */;
-
-INSERT INTO `reports` (`id`, `title`)
-VALUES
-	(1,'Your Title Here'),
-	(2,'HogeHogeTitle'),
-	(3,'ハロー'),
-	(4,'test');
-
-/*!40000 ALTER TABLE `reports` ENABLE KEYS */;
-UNLOCK TABLES;
-
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

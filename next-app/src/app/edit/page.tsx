@@ -1,13 +1,13 @@
-import ReportEditor from '@/app/_components/ReportEditor'
-import ReportPreview from '@/app/_components/ReportPreview'
-import LayoutSwitcher from '@/app/_components/LayoutSwitcher'
-import PageHeader from '@/app/_components/PageHeader'
+import ReportEditor from '@/components/ReportEditor'
+import ReportPreview from '@/components/ReportPreview'
+import LayoutSwitcher from '@/components/LayoutSwitcher'
+import PageHeader from '@/components/PageHeader'
 import { getReport, postReport } from './service'
-import { User } from '@/app/_domain/model/user'
+import { User } from '@/domain/model/user'
 
 export default function Edit() {
   // いったんダミーユーザのインスタンスを生成
-  const user = new User('和大 太郎', 'B4', '12345678')
+  const user = new User(1, '和大 太郎', 'B4', '12345678')
   // レポートのデータを取得
   const report = getReport({ user })
 
